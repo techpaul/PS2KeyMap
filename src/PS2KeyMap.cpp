@@ -296,9 +296,12 @@ else
   // Remainder convert printable to US-ASCII
   if( !( code & PS2_FUNCTION ) )
     {  // Some codes are straight return values We deal with ones that need work
-       // When A-Z not shifted create lower case a - z
+    // When A-Z not shifted create lower case a - z
     if( temp >= PS2_KEY_A && temp <= PS2_KEY_Z )
       {
+      // Deal with Caps Lock by inverting PS2_SHIFT and remove caps lock
+      if( ( code & PS2_CAPS ) )
+        code ^= ( PS2_SHIFT + PS2_CAPS );
       if( !( code & PS2_SHIFT ) )
         code |= 0x20;
       // When shifted pass through code as received as the codes are A - Z
