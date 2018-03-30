@@ -1,26 +1,26 @@
 # PS2KeyMap
-Arduino PS2 keyboard International Keyboard mapping from PS2KeyAdvanced and return as UTF-8
+### Arduino PS2 keyboard International Keyboard mapping from PS2KeyAdvanced and return as UTF-8
 
-##This library requires PS2KeyAdvanced as well to work
+## This library requires PS2KeyAdvanced as well to work
 
 First Public Release Version V1.0.2
 
 Smaller footprint than any others found and more functionality.
 
-###Platforms
+### Platforms
 
     Arduino AVR - tested on Uno and Mega 2560
     Arduino SAM - tested on DUE
 
-###Test Environment
+### Test Environment
 
     All platforms versions of test R3 Hardware
     Arduino V1.6.7
     DUE Board Manager package V1.6.6
 
-##Important Hardware Notes
+## Important Hardware Notes
 
-1 Make sure you have data and clock wires connected correctly. Clock wire MUST be connected to an interrupt pin.
+1. Make sure you have data and clock wires connected correctly. Clock wire MUST be connected to an interrupt pin.
 
   -  Do NOT use Pin 13 for either clock or data wires
   -  PS2KeyRaw requires both pins specified for begin() as in keyboard.begin( data_pin, irq_pin );
@@ -35,9 +35,9 @@ Smaller footprint than any others found and more functionality.
       -  Teensy++ 1.0: 0, 1, 2, 3, 18, 19, 36, 37
       -  Sanguino: 2, 10, 11
 
-2 When using DUE or other boards with 3V3 I/O you MUST use a level translator FET or IC like Texas Instruments TXS0102 or similar as most keyboards not only operate at 5V but the two wire communications are pulled up by a resistor to 5V at the keyboard end.
+2. When using DUE or other boards with 3V3 I/O you MUST use a level translator FET or IC like Texas Instruments TXS0102 or similar as most keyboards not only operate at 5V but the two wire communications are pulled up by a resistor to 5V at the keyboard end.
 
-###Introduction
+### Introduction
 
 After looking round for suitable libraries I found most were lacking in functionality and high in code and data footprint, so I created a series of PS2 Keyboard libraries. This is the third which extends the second one PS2KeyAdvanced to support different Country keyboard mapping. More countries and special mappings can be added.
 
@@ -53,11 +53,11 @@ Current Country mappings included (other contributions welcomed)
     
 You can select which map to use from your programme.
 
-###Installation
+### Installation
 
 Performed by standard zip file library inclusion into Arduino IDE
 
-###Examples
+### Examples
 
 This library has TWO examples, from simplest to most complec -
 
@@ -66,11 +66,11 @@ This library has TWO examples, from simplest to most complec -
    
 Note on LCDs and some terminal emulators not all characters may be supported.
 
-##Euro Currency Symbol
+## Euro Currency Symbol
 
 As the Euro came about *AFTER* the standardisation of UTF-8, the Euro Symbol is a supported keycode but *NOT* a conversion to UTF-8. This is just not possible.
 
-###Contributor and Author Details
+### Contributor and Author Details
 
 Author Paul Carpenter, PC Services
 
