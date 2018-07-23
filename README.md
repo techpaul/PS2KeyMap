@@ -3,6 +3,8 @@
 
 ## This library requires PS2KeyAdvanced as well to work
 
+**V1.0.3** July 2018 Improved keywords file
+
 First Public Release Version V1.0.2
 
 Smaller footprint than any others found and more functionality.
