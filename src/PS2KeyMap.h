@@ -171,7 +171,7 @@
 #define PS2_FRACTION_ONE_QUARTER	    188 // ¼
 #define PS2_FRACTION_ONE_HALF	        189 // ½
 #define PS2_FRACTION_THREE_QUARTERS	    190 // ¾
-#define PS2_INVERTED_QUESTION MARK	    191 // ¿
+#define PS2_INVERTED_QUESTION_MARK	    191 // ¿
 #define PS2_A_GRAVE			            192 // À
 #define PS2_A_ACUTE			            193 // Á
 #define PS2_A_CIRCUMFLEX		        194 // Â

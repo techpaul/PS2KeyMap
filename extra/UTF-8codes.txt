@@ -60,7 +60,7 @@ Constants to use in decoding keyboard values from PS2KeyMap
     PS2_FRACTION_ONE_QUARTER	    ¼
     PS2_FRACTION_ONE_HALF	        ½
     PS2_FRACTION_THREE_QUARTERS	    ¾
-    PS2_INVERTED_QUESTION MARK	    ¿
+    PS2_INVERTED_QUESTION_MARK	    ¿
     PS2_A_GRAVE			            À
     PS2_A_ACUTE			            Á
     PS2_A_CIRCUMFLEX		        Â
