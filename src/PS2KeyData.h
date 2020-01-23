@@ -1,11 +1,12 @@
-/* Version V1.0.2
+/* Version V1.0.4
   PS2KeyMap.h - PS2KeyAdvanced library
   Copyright (c) 2007 Free Software Foundation.  All right reserved.
   Written by Paul Carpenter, PC Services <sales@pcserviceselectronics.co.uk>
   Created September 2014
   Updated January 2016 - Paul Carpenter - add tested on Due and tidy ups for V1.5 Library Management
+	January 2020 - Paul Carpenter - extend library properties for V2.2 of Arduino Library Management
 
-  PRIVATE to library data and keymapping tables
+  PRIVATE to library data and key mapping tables
 
   This library REQUIRES PS2KeyAdvanced and PS2KeyMap.h as the codes used to
   remap to ASCII/UTF-8 are specific to that library to match ALL keys on a keyboard
@@ -44,9 +45,9 @@
 
 /* Standard ASCII control characters array */
 /* in order of PS2_KEY_* values order is important */
-#if defined(ARDUINO_ARCH_AVR)
+#if defined(PS2_REQUIRES_PROGMEM)
 const uint8_t PROGMEM _control_codes[] = {
-#elif defined(ARDUINO_ARCH_SAM)
+#else
 const uint8_t _control_codes[] = {
 #endif
                 PS2_DELETE, PS2_ESC, PS2_BACKSPACE,
@@ -54,9 +55,9 @@ const uint8_t _control_codes[] = {
                 };
 
 // convert codes based on SHIFT and not SHIFT only for base US-ASCII
-#if defined(ARDUINO_ARCH_AVR)
+#if defined(PS2_REQUIRES_PROGMEM)
 const uint16_t PROGMEM _US_ASCII[][ 2 ] = {
-#elif defined(ARDUINO_ARCH_SAM)
+#else
 const uint16_t _US_ASCII[][ 2 ] = {
 #endif
                 {  PS2_SHIFT + PS2_KEY_1, '!' },
@@ -101,9 +102,9 @@ const uint16_t _US_ASCII[][ 2 ] = {
                 {  PS2_SHIFT + PS2_KEY_EQUAL, '+' }
                 };
 
-#if defined(ARDUINO_ARCH_AVR)
+#if defined(PS2_REQUIRES_PROGMEM)
 const uint16_t PROGMEM _UKmap[][ 2 ] = {
-#elif defined(ARDUINO_ARCH_SAM)
+#else
 const uint16_t _UKmap[][ 2 ] = {
 #endif
                 { PS2_SHIFT + '@', '"' },
@@ -117,9 +118,9 @@ const uint16_t _UKmap[][ 2 ] = {
                 { PS2_SHIFT + PS2_KEY_EUROPE2, '|' },
                 };
 #ifdef FRENCH
-#if defined(ARDUINO_ARCH_AVR)
+#if defined(PS2_REQUIRES_PROGMEM)
 const uint16_t PROGMEM _FRmap[][ 2 ] = {
-#elif defined(ARDUINO_ARCH_SAM)
+#else
 const uint16_t _FRmap[][ 2 ] = {
 #endif
                 { '`', PS2_SUPERSCRIPT_TWO },
@@ -209,9 +210,9 @@ const uint16_t _FRmap[][ 2 ] = {
                 };
 #endif
 #ifdef GERMAN
-#if defined(ARDUINO_ARCH_AVR)
+#if defined(PS2_REQUIRES_PROGMEM)
 const uint16_t PROGMEM _DEmap[][ 2 ] = {
-#elif defined(ARDUINO_ARCH_SAM)
+#else
 const uint16_t _DEmap[][ 2 ] = {
 #endif
                 { '`', '^' },
@@ -272,9 +273,9 @@ const uint16_t _DEmap[][ 2 ] = {
                 };
 #endif
 #ifdef SPECIAL
-#if defined(ARDUINO_ARCH_AVR)
+#if defined(PS2_REQUIRES_PROGMEM)
 const uint16_t PROGMEM _SpecialMap[][ 2 ] = {
-#elif defined(ARDUINO_ARCH_SAM)
+#else
 const uint16_t _SpecialMap[][ 2 ] = {
 #endif
 // Insert your Special mapping DIFFERENCES from US-ASCII here

@@ -78,15 +78,8 @@
 
 /* Keyboard constants  Change to suit your Arduino
    define pins used for data and clock from keyboard */
-//#define DATAPIN 4
-//#define IRQPIN  3
-#if defined(ARDUINO_ARCH_AVR)
-#define DATAPIN 19
-#define IRQPIN  18
-#elif defined(ARDUINO_ARCH_SAM)
-#define DATAPIN 14
-#define IRQPIN  15
-#endif
+#define DATAPIN 4
+#define IRQPIN  3
 
 PS2KeyAdvanced keyboard;
 PS2KeyMap keymap;
@@ -98,21 +91,12 @@ uint8_t found;
 void setup()
 {
 Serial.begin( 115200 );
-#if defined(ARDUINO_ARCH_AVR)
-Serial.println( F( "PS2KeyMap plus PS2KeyAdvanced Libraries" ) );
-Serial.println( F( "International Keyboard Test:" ) );
-Serial.print( F(  "Default is US layout, type a key to change layout\n"
-                   " U for US     G for GB/UK\n" ) );
-Serial.println( F( " D for DE     F for FR\n"
-                   " All keys on keyboard echoed here" ) );
-#elif defined(ARDUINO_ARCH_SAM)
 Serial.println( "PS2KeyMap plus PS2KeyAdvanced Libraries" );
 Serial.println( "International Keyboard Test:" );
 Serial.print( "Default is US layout, type a key to change layout\n"
                    " U for US     G for GB/UK\n" );
 Serial.println( " D for DE     F for FR\n"
                    " All keys on keyboard echoed here" );
-#endif
 // Start keyboard setup while outputting
 keyboard.begin( DATAPIN, IRQPIN );
 // Disable Break codes (key release) from PS2KeyAdvanced
@@ -128,28 +112,13 @@ code = keyboard.available();
 if( code > 0 )
   {
   code = keyboard.read();
-#if defined(ARDUINO_ARCH_AVR)
-  Serial.print( F( "Value " ) );
-#elif defined(ARDUINO_ARCH_SAM)
   Serial.print( "Value " );
-#endif
   Serial.print( code, HEX );
   code = keymap.remapKey( code );
   if( code > 0 )
     {
     if( ( code & 0xFF ) )
       {
-#if defined(ARDUINO_ARCH_AVR)
-      Serial.print( F( " mapped " ) );
-      Serial.print( code, HEX );
-      Serial.print( F( " - Status Bits " ) );
-      Serial.print( code >> 8, HEX );
-      Serial.print( F( "  Code " ) );
-      Serial.print( code & 0xFF, HEX );
-      Serial.print( F( "  ( " ) );
-      Serial.write( code & 0xFF );
-      Serial.print( F( " )\n" ) );
-#elif defined(ARDUINO_ARCH_SAM)
       Serial.print( " mapped " );
       Serial.print( code, HEX );
       Serial.print( " - Status Bits " );
@@ -159,7 +128,6 @@ if( code > 0 )
       Serial.print( "  ( " );
       Serial.write( code & 0xFF );
       Serial.print( " )\n" );
-#endif
       }
     // process special commands  
     found = 0;
@@ -184,20 +152,12 @@ if( code > 0 )
       }
     if( found )
       {
-#if defined(ARDUINO_ARCH_AVR)
-      Serial.print( F( "Keyboard set to " ) );
-#elif defined(ARDUINO_ARCH_SAM)
       Serial.print( "Keyboard set to " );
-#endif
       Serial.println( keymap.getMap( ) );
       }
     }
   else
-#if defined(ARDUINO_ARCH_AVR)
-    Serial.println( F( " Keyboard protocol or function" ) );
-#elif defined(ARDUINO_ARCH_SAM)
     Serial.println( " Keyboard protocol or function" );
-#endif
   }
 delay( 100 );  
 }

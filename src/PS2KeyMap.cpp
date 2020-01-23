@@ -1,9 +1,10 @@
-/* Version V1.0.2
+/* Version V1.0.4
   PS2KeyMap.cpp - PS2KeyMap library
   Copyright (c) 2007 Free Software Foundation.  All right reserved.
   Written by Paul Carpenter, PC Services <sales@pcserviceselectronics.co.uk>
   Created September 2014
   Updated January 2016 - Paul Carpenter - add tested on Due and tidy ups for V1.5 Library Management
+	January 2020 - Paul Carpenter - extend library properties for V2.2 of Arduino Library Management
 
   IMPORTANT WARNING
 
@@ -212,11 +213,11 @@ result = data & ( PS2_ALT_GR + PS2_SHIFT + 0xFF );
 
 // scan Lookup Table (array) jumping 2 integers at a time
 for( idx = 0; idx < size; idx += 2 )
-#if defined(ARDUINO_ARCH_AVR)
+#if defined(PS2_REQUIRES_PROGMEM)
    if( result == pgm_read_word( maparray + idx ) )
      { // second integer is the replacement value
      result = pgm_read_word( maparray + idx + 1 );
-#elif defined(ARDUINO_ARCH_SAM)
+#else
    if( result == *( maparray + idx ) )
      { // second integer is the replacement value
      result = *( maparray + idx + 1 );
@@ -285,9 +286,9 @@ temp = code & 0xFF;
 if( temp >= PS2_KEY_DELETE && temp <= PS2_KEY_SPACE )
   {
   code &= ~( PS2_FUNCTION + 0xFF );     // convert to ASCII code not function
-#if defined(ARDUINO_ARCH_AVR)
+#if defined(PS2_REQUIRES_PROGMEM)
   temp = pgm_read_byte( &_control_codes[ temp - PS2_KEY_DELETE ] );
-#elif defined(ARDUINO_ARCH_SAM)
+#else
   temp = _control_codes[ temp - PS2_KEY_DELETE ];
 #endif
   code |= temp;
