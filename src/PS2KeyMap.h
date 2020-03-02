@@ -1,13 +1,13 @@
-/* Version V1.0.4
+/* Version V1.0.5
   PS2KeyMap.h - PS2KeyAdvanced library
   Copyright (c) 2007 Free Software Foundation.  All right reserved.
   Written by Paul Carpenter, PC Services <sales@pcserviceselectronics.co.uk>
   Created September 2014
   Updated January 2016 - Paul Carpenter - add tested on Due and tidy ups for V1.5 Library Management
 	January 2020 - Paul Carpenter - extend library properties for V2.2 of Arduino Library Management
+    March 2020 - Paul Carpenter - add Spanish and Italian Mappings
 
-  IMPORTANT WARNING
-
+   IMPORTANT WARNING
     If using a DUE or similar board with 3V3 I/O you MUST put a level translator
     like a Texas Instruments TXS0102 or FET circuit as the signals are
     Bi-directional (signals transmitted from both ends on same wire).
@@ -35,6 +35,8 @@
     // or comment to exclude
     //#define GERMAN
     //#define FRENCH
+    //#define SPANISH
+    //#define ITALIAN
     //#define SPECIAL
 
   The functions in this library takes the unsigned int values produced from
@@ -130,6 +132,8 @@
 // or comment to exclude
 #define GERMAN
 #define FRENCH
+#define SPANISH
+#define ITALIAN
 //#define SPECIAL
 
 /* UTF-8 single byte LATIN encodings

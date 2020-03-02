@@ -18,6 +18,7 @@
     September 2014 Uno and Mega 2560 September 2014 using Arduino V1.6.0
     January 2016   Uno, Mega 2560 and Due using Arduino 1.6.7 and Due Board 
                     Manager V1.6.6
+    March 2020  Extend for Italian and Spanish keyboards
 
   PS2KeyMap uses a default US-ASCII Map but different country 
   mappings can be selected on the fly
@@ -28,6 +29,8 @@
     G for UK keyboard
     D for German keyboard
     F for French keyboard
+    I for Italian keyboard
+    E for Spanish keyboard
 
   Defaults to US on start up
 
@@ -96,6 +99,7 @@ Serial.println( "International Keyboard Test:" );
 Serial.print( "Default is US layout, type a key to change layout\n"
                    " U for US     G for GB/UK\n" );
 Serial.println( " D for DE     F for FR\n"
+                   " I for IT     E for ES\n"
                    " All keys on keyboard echoed here" );
 // Start keyboard setup while outputting
 keyboard.begin( DATAPIN, IRQPIN );
@@ -140,6 +144,14 @@ if( code > 0 )
       case 'F':
       case 'f':
               found = keymap.selectMap( (char *)"FR" );
+              break;
+      case 'E':
+      case 'e':
+              found = keymap.selectMap( (char *)"ES" );
+              break;
+      case 'I':
+      case 'i':
+              found = keymap.selectMap( (char *)"IT" );
               break;
       case 'G':
       case 'g':

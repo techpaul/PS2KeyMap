@@ -1,13 +1,13 @@
-/* Version V1.0.4
+/* Version V1.0.5
   PS2KeyMap.cpp - PS2KeyMap library
   Copyright (c) 2007 Free Software Foundation.  All right reserved.
   Written by Paul Carpenter, PC Services <sales@pcserviceselectronics.co.uk>
   Created September 2014
   Updated January 2016 - Paul Carpenter - add tested on Due and tidy ups for V1.5 Library Management
 	January 2020 - Paul Carpenter - extend library properties for V2.2 of Arduino Library Management
+    March 2020 - Paul Carpenter - add Spanish and Italian Mappings
 
   IMPORTANT WARNING
-
     If using a DUE or similar board with 3V3 I/O you MUST put a level translator
     like a Texas Instruments TXS0102 or FET circuit as the signals are
     Bi-directional (signals transmitted from both ends on same wire).
@@ -24,6 +24,8 @@
     UK - By selecting with string "UK" or "GB"
     DE - German if define GERMAN exists
     FR - French if define FRENCH exists
+    ES - Spanish if define SPANISH exists
+    IT - Italian if define ITALIAN exists
     --   Special if you have created your own mapping see PS2KeyMap.h
 
   US and UK mappings are base layouts always compiled. All mappings are done
@@ -43,6 +45,8 @@
     // or comment to exclude
     //#define GERMAN
     //#define FRENCH
+    //#define SPANISH
+    //#define ITALIAN
     //#define SPECIAL
 
   Library converts key codes from PS2KeyAdvanced to enable full ASCCII/UTF-8
@@ -172,6 +176,8 @@
 */
 
 /*------------------ Code starts here -------------------------*/
+#include <Arduino.h>
+// Internal headers for library defines/codes/etc
 #include <PS2KeyAdvanced.h>
 #include "PS2KeyMap.h"
 #include "PS2KeyData.h"

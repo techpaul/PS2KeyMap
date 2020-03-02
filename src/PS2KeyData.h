@@ -1,10 +1,11 @@
-/* Version V1.0.4
+/* Version V1.0.5
   PS2KeyMap.h - PS2KeyAdvanced library
   Copyright (c) 2007 Free Software Foundation.  All right reserved.
   Written by Paul Carpenter, PC Services <sales@pcserviceselectronics.co.uk>
   Created September 2014
   Updated January 2016 - Paul Carpenter - add tested on Due and tidy ups for V1.5 Library Management
 	January 2020 - Paul Carpenter - extend library properties for V2.2 of Arduino Library Management
+    March 2020 - Paul Carpenter - add Spanish and Italian Mappings
 
   PRIVATE to library data and key mapping tables
 
@@ -60,46 +61,46 @@ const uint16_t PROGMEM _US_ASCII[][ 2 ] = {
 #else
 const uint16_t _US_ASCII[][ 2 ] = {
 #endif
-                {  PS2_SHIFT + PS2_KEY_1, '!' },
-                {  PS2_SHIFT + PS2_KEY_2, '@' },
-                {  PS2_SHIFT + PS2_KEY_3, '#' },
-                {  PS2_SHIFT + PS2_KEY_4, '$' },
-                {  PS2_SHIFT + PS2_KEY_5, '%' },
-                {  PS2_SHIFT + PS2_KEY_6, '^' },
-                {  PS2_SHIFT + PS2_KEY_7, '&' },
-                {  PS2_SHIFT + PS2_KEY_8, '*' },
-                {  PS2_SHIFT + PS2_KEY_9, '(' },
-                {  PS2_SHIFT + PS2_KEY_0, ')' },
-                {  PS2_KEY_KP_DOT, '.' },
-                {  PS2_KEY_KP_ENTER, PS2_ENTER },
-                {  PS2_KEY_KP_PLUS, '+' },
-                {  PS2_KEY_KP_MINUS, '-' },
-                {  PS2_KEY_KP_TIMES, '*' },
-                {  PS2_KEY_KP_DIV, '/' },
-                {  PS2_KEY_KP_COMMA, ',' },
-                {  PS2_KEY_KP_EQUAL, '=' },
-                {  PS2_KEY_APOS, '\'' },
-                {  PS2_SHIFT + PS2_KEY_APOS, '"' },
-                {  PS2_KEY_COMMA, ',' },
-                {  PS2_SHIFT + PS2_KEY_COMMA, '<' },
-                {  PS2_KEY_MINUS, '-' },
-                {  PS2_SHIFT + PS2_KEY_MINUS, '_' },
-                {  PS2_KEY_DOT, '.' },
-                {  PS2_SHIFT + PS2_KEY_DOT, '>' },
-                {  PS2_KEY_DIV, '/' },
-                {  PS2_SHIFT + PS2_KEY_DIV, '?' },
-                {  PS2_KEY_SINGLE, '`' },
-                {  PS2_SHIFT + PS2_KEY_SINGLE, '~' },
-                {  PS2_KEY_SEMI, ';' },
-                {  PS2_SHIFT + PS2_KEY_SEMI, ':' },
-                {  PS2_KEY_BACK, '\\' },
-                {  PS2_SHIFT + PS2_KEY_BACK, '|' },
-                {  PS2_KEY_OPEN_SQ, '[' },
-                {  PS2_SHIFT + PS2_KEY_OPEN_SQ, '{' },
-                {  PS2_KEY_CLOSE_SQ, ']' },
-                {  PS2_SHIFT + PS2_KEY_CLOSE_SQ, '}' },
-                {  PS2_KEY_EQUAL, '=' },
-                {  PS2_SHIFT + PS2_KEY_EQUAL, '+' }
+                { PS2_SHIFT + PS2_KEY_1, '!' },
+                { PS2_SHIFT + PS2_KEY_2, '@' },
+                { PS2_SHIFT + PS2_KEY_3, '#' },
+                { PS2_SHIFT + PS2_KEY_4, '$' },
+                { PS2_SHIFT + PS2_KEY_5, '%' },
+                { PS2_SHIFT + PS2_KEY_6, '^' },
+                { PS2_SHIFT + PS2_KEY_7, '&' },
+                { PS2_SHIFT + PS2_KEY_8, '*' },
+                { PS2_SHIFT + PS2_KEY_9, '(' },
+                { PS2_SHIFT + PS2_KEY_0, ')' },
+                { PS2_KEY_KP_DOT, '.' },
+                { PS2_KEY_KP_ENTER, PS2_ENTER },
+                { PS2_KEY_KP_PLUS, '+' },
+                { PS2_KEY_KP_MINUS, '-' },
+                { PS2_KEY_KP_TIMES, '*' },
+                { PS2_KEY_KP_DIV, '/' },
+                { PS2_KEY_KP_COMMA, ',' },
+                { PS2_KEY_KP_EQUAL, '=' },
+                { PS2_KEY_APOS, '\'' },
+                { PS2_SHIFT + PS2_KEY_APOS, '"' },
+                { PS2_KEY_COMMA, ',' },
+                { PS2_SHIFT + PS2_KEY_COMMA, '<' },
+                { PS2_KEY_MINUS, '-' },
+                { PS2_SHIFT + PS2_KEY_MINUS, '_' },
+                { PS2_KEY_DOT, '.' },
+                { PS2_SHIFT + PS2_KEY_DOT, '>' },
+                { PS2_KEY_DIV, '/' },
+                { PS2_SHIFT + PS2_KEY_DIV, '?' },
+                { PS2_KEY_SINGLE, '`' },
+                { PS2_SHIFT + PS2_KEY_SINGLE, '~' },
+                { PS2_KEY_SEMI, ';' },
+                { PS2_SHIFT + PS2_KEY_SEMI, ':' },
+                { PS2_KEY_BACK, '\\' },
+                { PS2_SHIFT + PS2_KEY_BACK, '|' },
+                { PS2_KEY_OPEN_SQ, '[' },
+                { PS2_SHIFT + PS2_KEY_OPEN_SQ, '{' },
+                { PS2_KEY_CLOSE_SQ, ']' },
+                { PS2_SHIFT + PS2_KEY_CLOSE_SQ, '}' },
+                { PS2_KEY_EQUAL, '=' },
+                { PS2_SHIFT + PS2_KEY_EQUAL, '+' }
                 };
 
 #if defined(PS2_REQUIRES_PROGMEM)
@@ -272,6 +273,97 @@ const uint16_t _DEmap[][ 2 ] = {
                 { PS2_KEY_EUROPE2, '<' }
                 };
 #endif
+#ifdef SPANISH
+#if defined(PS2_REQUIRES_PROGMEM)
+const uint16_t PROGMEM _ESmap[][ 2 ] = {
+#else
+const uint16_t _ESmap[][ 2 ] = {
+#endif
+                { PS2_KEY_SINGLE, PS2_MASCULINE_ORDINAL },
+                { PS2_SHIFT + PS2_KEY_SINGLE, PS2_FEMININE_ORDINAL },
+                { PS2_KEY_SINGLE + PS2_ALT_GR, '\\' },
+                { '1' + PS2_ALT_GR, '|' },
+                { PS2_SHIFT + '@', '"' },
+                { '2' + PS2_ALT_GR, '@' },
+                { PS2_SHIFT + '#', PS2_MIDDLE_DOT },
+                { '3' + PS2_ALT_GR, '#' },
+                { '4' + PS2_ALT_GR, '~' },
+                { PS2_SHIFT + '^', '&' },
+                { '6' + PS2_ALT_GR, PS2_NOT_SIGN },
+                { PS2_SHIFT + '&', '/' },
+                { PS2_SHIFT + '*', '(' },
+                { PS2_SHIFT + '(', ')' },
+                { PS2_SHIFT + ')', '=' },
+                { '-', '\'' },
+                { PS2_SHIFT + '_', '?' },
+                { '=', PS2_INVERTED_EXCLAMATION },
+                { PS2_SHIFT + '+', PS2_INVERTED_QUESTION_MARK },
+                { '[',  '`' },
+                { PS2_SHIFT + '{', '^' },
+                { '[' + PS2_ALT_GR, '[' },
+                { ']', '+' },
+                { PS2_SHIFT + '}', '*' },
+                { ']' + PS2_ALT_GR, ']' },
+                { ';', PS2_n_TILDE },
+                { PS2_SHIFT + ':', PS2_N_TILDE },
+                { '\'', PS2_ACUTE_ACCENT },
+                { PS2_SHIFT + '"', PS2_DIAERESIS },
+                { '\'' + PS2_ALT_GR, '{' },
+                { '\\', PS2_c_CEDILLA },
+                { PS2_SHIFT + '|', PS2_C_CEDILLA },
+                { '\\' + PS2_ALT_GR, '}' },
+                { PS2_SHIFT + PS2_KEY_EUROPE2, '>' },
+                { PS2_KEY_EUROPE2, '<' },
+                { PS2_SHIFT + '<', ';' },
+                { PS2_SHIFT + '>', ':' },
+                { PS2_KEY_DIV, '-' },
+                { PS2_SHIFT + PS2_KEY_DIV, '+' }
+                };
+#endif
+#ifdef ITALIAN
+#if defined(PS2_REQUIRES_PROGMEM)
+const uint16_t PROGMEM _ITmap[][ 2 ] = {
+#else
+const uint16_t _ITmap[][ 2 ] = {
+#endif
+                { PS2_KEY_SINGLE, '\\' },
+                { PS2_SHIFT + PS2_KEY_SINGLE, '|' },
+                { '@', '"' },
+                { PS2_SHIFT + '#', PS2_POUND_SIGN },
+                { '3' + PS2_ALT_GR, '#' },
+                { PS2_SHIFT + '^', '&' },
+                { PS2_SHIFT + '&', '/' },
+                { '7' + PS2_ALT_GR, '{' },
+                { PS2_SHIFT + '*', '(' },
+                { '8' + PS2_ALT_GR, '[' },
+                { PS2_SHIFT + '(', ')' },
+                { '9' + PS2_ALT_GR, ']' },
+                { PS2_SHIFT + ')', '=' },
+                { '0' + PS2_ALT_GR, '}' },
+                { '-', '\'' },
+                { PS2_SHIFT + '_', '?' },
+                { '=', PS2_i_GRAVE },
+                { PS2_SHIFT + '+', '^' },
+                { 'q' + PS2_ALT_GR, '@' },
+                { '[', PS2_e_GRAVE },
+                { PS2_SHIFT + '{', PS2_e_ACUTE },
+                { ']', '+' },
+                { PS2_SHIFT + '}', '*' },
+                { ']' + PS2_ALT_GR, '~' },
+                { ';', PS2_o_GRAVE },
+                { PS2_SHIFT + ':', PS2_c_CEDILLA },
+                { '\'', PS2_a_GRAVE },
+                { PS2_SHIFT + '"', PS2_DEGREE_SIGN },
+                { '\\', PS2_u_GRAVE },
+                { PS2_SHIFT + '|', PS2_SECTION_SIGN },
+                { PS2_SHIFT + PS2_KEY_EUROPE2, '>' },
+                { PS2_KEY_EUROPE2, '<' },
+                { PS2_SHIFT + '<', ';' },
+                { PS2_SHIFT + '>', ':' },
+                { PS2_KEY_DIV, '-' },
+                { PS2_SHIFT + PS2_KEY_DIV, '+' }
+                };
+#endif
 #ifdef SPECIAL
 #if defined(PS2_REQUIRES_PROGMEM)
 const uint16_t PROGMEM _SpecialMap[][ 2 ] = {
@@ -290,9 +382,12 @@ typedef struct  {
                 } PS2Advmap;
 
 // Actual map structure array ( 2 entries for GB and UK for same map
-// Because many people dont know ISO code for UK is GB )
-// Actually held in RAM but small in size
-const PS2Advmap _KeyMaps[] = {
+// Because many people don't know ISO code for UK is GB )
+#if defined(PS2_REQUIRES_PROGMEM)
+const PS2Advmap PROGMEM _KeyMaps[ ] = {
+#else
+const PS2Advmap _KeyMaps[ ] = {
+#endif
                 { "US", sizeof( _US_ASCII ) / ( 2 * sizeof( uint16_t ) ), (uint16_t *)_US_ASCII },
 #ifdef FRENCH
                 { "FR", sizeof( _FRmap ) / ( 2 * sizeof( uint16_t ) ), (uint16_t *)_FRmap },
@@ -300,11 +395,16 @@ const PS2Advmap _KeyMaps[] = {
 #ifdef GERMAN
                 { "DE", sizeof( _DEmap ) / ( 2 * sizeof( uint16_t ) ), (uint16_t *)_DEmap },
 #endif
+#ifdef SPANISH
+                { "ES", sizeof( _ESmap ) / ( 2 * sizeof( uint16_t ) ), (uint16_t *)_ESmap },
+#endif
+#ifdef ITALIAN
+                { "IT", sizeof( _ITmap ) / ( 2 * sizeof( uint16_t ) ), (uint16_t *)_ITmap },
+#endif
 #ifdef SPECIAL
                 { "--", sizeof( _SpecialMap ) / ( 2 * sizeof( uint16_t ) ), (uint16_t* )_SpecialMap },
 #endif
                 { "UK", sizeof( _UKmap ) / ( 2 * sizeof( uint16_t ) ), (uint16_t *)_UKmap },
                 { "GB", sizeof( _UKmap ) / ( 2 * sizeof( uint16_t ) ), (uint16_t *)_UKmap }
                 };
-
 #endif

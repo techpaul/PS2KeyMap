@@ -17,6 +17,7 @@
     September 2014 Uno and Mega 2560 September 2014 using Arduino V1.6.0
     January 2016   Uno, Mega 2560 and Due using Arduino 1.6.7 and Due Board 
                     Manager V1.6.6
+    March 2020  Simplify example
 
   This sketch displays text received from PS2 keyboard to LCD
   on same Arduino. Importantly it maps the keyboard to UTF-8
@@ -137,38 +138,7 @@ signed char rows = 0;
 /*  messages constants */
 /* Key codes and strings for keys producing a string */
 /* three arrays in same order ( keycode, string to display, length of string ) */
-#if defined(PS2_REQUIRES_PROGMEM)
-const uint8_t codes[] PROGMEM = { PS2_KEY_SPACE, PS2_KEY_TAB, PS2_KEY_ESC, PS2_KEY_DELETE,
-                                   PS2_KEY_F1, PS2_KEY_F2, PS2_KEY_F3, PS2_KEY_F4,
-                                   PS2_KEY_F5, PS2_KEY_F6, PS2_KEY_F7, PS2_KEY_F8,
-                                   PS2_KEY_F9, PS2_KEY_F10, PS2_KEY_F11, PS2_KEY_F12 };
-const char spacestr[] PROGMEM  = " ";
-const char tabstr[] PROGMEM  = "[Tab]";
-const char escstr[] PROGMEM  = "[ESC]";
-const char delstr[] PROGMEM  = "[Del]";
-const char f1str[]  PROGMEM  = "[F1]";
-const char f2str[]  PROGMEM  = "[F2]";
-const char f3str[]  PROGMEM  = "[F3]";
-const char f4str[]  PROGMEM  = "[F4]";
-const char f5str[]  PROGMEM  = "[F5]";
-const char f6str[]  PROGMEM  = "[F6]";
-const char f7str[]  PROGMEM  = "[F7]";
-const char f8str[]  PROGMEM  = "[F8]";
-const char f9str[]  PROGMEM  = "[F9]";
-const char f10str[] PROGMEM  = "[F10]";
-const char f11str[] PROGMEM  = "[F11]";
-const char f12str[] PROGMEM  = "[F12]";
-
-// Due to AVR Harvard architecture array of string pointers to actual strings
-const char *const keys[] PROGMEM =  {
-                                spacestr, tabstr, escstr, delstr, f1str, f2str,
-                                f3str, f4str, f5str, f6str, f7str, f8str,
-                                f9str, f10str, f11str, f12str };
-const int8_t sizes[] PROGMEM = { 1, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5 };
-char buffer[ 8 ];
-
-#else
-const uint8_t codes[] = { PS2_KEY_SPACE, PS2_KEY_TAB, PS2_KEY_ESC,
+uint8_t codes[] = { PS2_KEY_SPACE, PS2_KEY_TAB, PS2_KEY_ESC,
                           PS2_KEY_DELETE, PS2_KEY_F1, PS2_KEY_F2, PS2_KEY_F3,
                           PS2_KEY_F4, PS2_KEY_F5, PS2_KEY_F6, PS2_KEY_F7,
                           PS2_KEY_F8, PS2_KEY_F9, PS2_KEY_F10, PS2_KEY_F11,
@@ -176,8 +146,8 @@ const uint8_t codes[] = { PS2_KEY_SPACE, PS2_KEY_TAB, PS2_KEY_ESC,
 const char *const keys[]  =  { " ", "[Tab]", "[ESC]", "[Del]", "[F1]", "[F2]", "[F3]",
                                "[F4]", "[F5]", "[F6]", "[F7]", "[F8]",
                                "[F9]", "[F10]", "[F11]", "[F12]" };
-const int8_t sizes[]  = { 1, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5 };
-#endif
+int8_t sizes[]  = { 1, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5 };
+
 
 // Class initialisation/instantiation
 // keyboard library 
@@ -320,30 +290,17 @@ if( keyboard.available() )
         if( base != PS2_KEY_EUROPE2 && ( base < PS2_KEY_KP0 || base >= PS2_KEY_F1 ) )
           {  // Non printable sort which ones we can print
           for( idx = 0; idx < sizeof( codes ); idx++ )
-#if defined(PS2_REQUIRES_PROGMEM)
-            if( base == pgm_read_byte( codes + idx ) )
-#else
             if( base == codes[ idx ] )
-#endif
               {
               /* String outputs */
               mode = 1;
-#if defined(PS2_REQUIRES_PROGMEM)
-              c = pgm_read_byte( sizes + idx );
-#else
-             c = sizes[ idx ];
-#endif
+              c = sizes[ idx ];
               cols += c - 1;
               check_cursor( );
               /* when cursor reset keep track */
               if( cols == 0 )
                 cols = c;
-#if defined(PS2_REQUIRES_PROGMEM)
-              strcpy_P( buffer, (char*)pgm_read_word( &( keys[ idx ] ) ) );
-              lcd.print( buffer );
-#else
               lcd.print( keys[ idx ] );
-#endif
               cols++;
               check_cursor( );
               break;
