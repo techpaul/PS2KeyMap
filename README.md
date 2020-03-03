@@ -57,6 +57,8 @@ Current Country mappings included (other contributions welcomed)
    * UK/GB
    * DE - German
    * FR - French
+   * IT - Italian
+   * ES - Spanish
     
 You can select which map to use from your programme.
 
