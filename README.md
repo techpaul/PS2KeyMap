@@ -2,8 +2,9 @@
 ### Arduino PS2 keyboard International Keyboard mapping from PS2KeyAdvanced and return as UTF-8
 
 ## This library requires PS2KeyAdvanced as well to work
+**V1.0.5** March 2020 Add Italian and Spanish keyboard layouts
 
-**V1.0.4** January 2020 Work better with new library manager spec and better 
+V1.0.4 January 2020 Work better with new library manager spec and better 
 additional platform possibilities
 
 V1.0.3 July 2018 Improved keywords file
@@ -16,6 +17,7 @@ Smaller footprint than any others found and more functionality.
 
     Arduino AVR - tested on Uno and Mega 2560
     Arduino SAM - tested on DUE
+    SAMD1 - tested by user on Seeeduino Xiao M0+
 
 ### Test Environment
 
