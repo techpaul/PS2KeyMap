@@ -2,7 +2,9 @@
 ### Arduino PS2 keyboard International Keyboard mapping from PS2KeyAdvanced and return as UTF-8
 
 ## This library requires PS2KeyAdvanced as well to work
-**V1.0.5** March 2020 Add Italian and Spanish keyboard layouts
+**V1.0.6** April 2020 Correct _KeyMaps definition error in V1.0.5
+
+V1.0.5 March 2020 Add Italian and Spanish keyboard layouts
 
 V1.0.4 January 2020 Work better with new library manager spec and better 
 additional platform possibilities
@@ -57,8 +59,6 @@ Current Country mappings included (other contributions welcomed)
    * UK/GB
    * DE - German
    * FR - French
-   * IT - Italian
-   * ES - Spanish
     
 You can select which map to use from your programme.
 

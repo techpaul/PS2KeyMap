@@ -1,4 +1,4 @@
-/* Version V1.0.5
+/* Version V1.0.6
   PS2KeyMap.h - PS2KeyAdvanced library
   Copyright (c) 2007 Free Software Foundation.  All right reserved.
   Written by Paul Carpenter, PC Services <sales@pcserviceselectronics.co.uk>
@@ -6,6 +6,7 @@
   Updated January 2016 - Paul Carpenter - add tested on Due and tidy ups for V1.5 Library Management
 	January 2020 - Paul Carpenter - extend library properties for V2.2 of Arduino Library Management
     March 2020 - Paul Carpenter - add Spanish and Italian Mappings
+    April 2020 - Paul Carpenter - Correct _KeyMaps definition error in last version
 
   PRIVATE to library data and key mapping tables
 
@@ -383,11 +384,7 @@ typedef struct  {
 
 // Actual map structure array ( 2 entries for GB and UK for same map
 // Because many people don't know ISO code for UK is GB )
-#if defined(PS2_REQUIRES_PROGMEM)
-const PS2Advmap PROGMEM _KeyMaps[ ] = {
-#else
 const PS2Advmap _KeyMaps[ ] = {
-#endif
                 { "US", sizeof( _US_ASCII ) / ( 2 * sizeof( uint16_t ) ), (uint16_t *)_US_ASCII },
 #ifdef FRENCH
                 { "FR", sizeof( _FRmap ) / ( 2 * sizeof( uint16_t ) ), (uint16_t *)_FRmap },
