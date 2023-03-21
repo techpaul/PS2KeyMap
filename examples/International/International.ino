@@ -112,8 +112,7 @@ keyboard.setNoRepeat( 1 );
 
 void loop()
 {
-code = keyboard.available();
-if( code > 0 )
+if( keyboard.available() )
   {
   code = keyboard.read();
   Serial.print( "Value " );
